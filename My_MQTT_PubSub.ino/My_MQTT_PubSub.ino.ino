@@ -1,17 +1,21 @@
 /*
- * ESP8266 (Adafruit HUZZAH) Mosquitto MQTT Publish Example
- * Thomas Varnish (https://github.com/tvarnish), (https://www.instructables.com/member/Tango172)
- * Made as part of my MQTT Instructable - "How to use MQTT with the Raspberry Pi and ESP8266"
+ * My ESP8266 Mosquitto MQTT Publish-Subscribe
+ * Based on Thomas Varnish (https://github.com/tvarnish)
  * PubSubClient API: https://pubsubclient.knolleary.net/api.html
+ * 
  */
+ 
 #include <Bounce2.h> // Used for "debouncing" the pushbutton
 #include <ESP8266WiFi.h> // Enables the ESP8266 to connect to the local network (via WiFi)
 #include <PubSubClient.h> // Allows us to connect to, and publish to the MQTT broker
 #include "credentials.h"
 
 // Input/Output
-const int ledPin = LED_BUILTIN; // This code uses the built-in led for visual feedback that the button has been pressed
-const int buttonPin = 13; // Connect your button to pin #13
+const int ledPin = LED_BUILTIN; 
+  // Built-in led to show button pressed and controlled by any message beginning 
+  // with '1' pubished to 'inTopic' (Note: Any other message turns LED off)
+const int buttonPin = 13; 
+  // Used to publish message from ESP -> Connect button to pin #13
 
 // Serial
 // Baud rate must match serial monitor for debugging
